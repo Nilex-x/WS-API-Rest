@@ -34,7 +34,7 @@ app.put("/:index", (req, res) => {
 app.delete("/:index", (req, res) => {
   if (!req.params.index) return res.status(400).json({ "error": "index not found" });
   const index = todolist[req.params.index];
-  if (!index) return res.status(400).json({ "msg": "index out of list" })
+  if (index != 0 && !index) return res.status(400).json({ "msg": "index out of list" })
   todolist.splice(req.params.index, 1);
   return res.status(200).json({ "msg": "todolist deleted" })
 })
